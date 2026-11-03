@@ -1,0 +1,132 @@
+{
+  "name": "svn-blame-hover",
+  "displayName": "SVN Blame Hover",
+  "description": "鼠标悬停在某一行时显示该行的 SVN 提交信息（作者、版本号、提交时间、提交日志）。",
+  "version": "0.1.1",
+  "publisher": "VergilXiong",
+  "license": "MIT",
+  "keywords": [
+    "svn",
+    "blame",
+    "annotate",
+    "hover",
+    "subversion"
+  ],
+  "categories": [
+    "SCM Providers",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "svnBlame.toggleInline",
+        "title": "SVN Blame: 切换行内注解显示"
+      },
+      {
+        "command": "svnBlame.refresh",
+        "title": "SVN Blame: 刷新缓存"
+      },
+      {
+        "command": "svnBlame.showLog",
+        "title": "SVN Blame: 查看该行修订的完整日志"
+      },
+      {
+        "command": "svnBlame.diagnose",
+        "title": "SVN Blame: 诊断当前文件"
+      }
+    ],
+
+    "configuration": {
+      "title": "SVN Blame",
+      "properties": {
+        "svnBlame.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否启用 SVN Blame 悬停提示与注解。"
+        },
+        "svnBlame.svnPath": {
+          "type": "string",
+          "default": "svn",
+          "description": "svn 可执行文件路径。若 svn 不在 PATH 中，请填写完整路径，例如 C:\\\\Program Files\\\\TortoiseSVN\\\\bin\\\\svn.exe。"
+        },
+        "svnBlame.timeout": {
+          "type": "number",
+          "default": 30,
+          "description": "执行 svn 命令的超时时间（秒）。"
+        },
+        "svnBlame.dateFormat": {
+          "type": "string",
+          "default": "YYYY-MM-DD HH:mm",
+          "description": "日期显示格式，支持 YYYY / MM / DD / HH / mm / ss。"
+        },
+        "svnBlame.inline.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "可选：是否在每行末尾常驻显示 blame 注解。默认关闭，只在鼠标悬停时显示。"
+        },
+        "svnBlame.inline.mode": {
+          "type": "string",
+          "enum": [
+            "allLines",
+            "currentLine"
+          ],
+          "enumDescriptions": [
+            "为所有行显示注解",
+            "只为光标所在行显示注解"
+          ],
+          "default": "allLines",
+          "description": "行内注解的显示范围。"
+        },
+        "svnBlame.inline.template": {
+          "type": "string",
+          "default": "${author} · r${revision} · ${date}",
+          "description": "行内注解模板，可用变量：${author}、${revision}、${date}、${relativeTime}。"
+        },
+        "svnBlame.selection.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "鼠标点击或光标移动时，在选中行末尾显示该行的提交信息（多行选择时为每一行显示）。"
+        },
+        "svnBlame.statusBar.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "可选：是否在状态栏常驻显示当前行的 blame 信息。默认关闭。"
+        },
+        "svnBlame.hover.inline": {
+          "type": "boolean",
+          "default": true,
+          "description": "鼠标悬停时，在被悬停的那一行末尾直接显示该行的提交信息。"
+        },
+        "svnBlame.hover.showCommitMessage": {
+          "type": "boolean",
+          "default": true,
+          "description": "悬停时是否显示该次提交的日志信息（需要额外执行一次 svn log）。"
+        },
+        "svnBlame.hover.messageMaxLines": {
+          "type": "number",
+          "default": 20,
+          "description": "悬停时提交日志最多显示的行数，超出部分折叠。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -6,9 +6,9 @@
 
 ## 功能截图
 
-![SVN Blame Hover 功能演示：悬停/选中行显示 SVN 提交信息](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/main/assets/screenshot.png)
+![SVN Blame Hover 功能演示：悬停/选中行显示 SVN 提交信息](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/e5f8bfccee6abeac132ec6f962ceae4920a170f6/assets/screenshot.png)
 
-[查看贴图原图](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/main/assets/screenshot.png)
+[查看贴图原图](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/e5f8bfccee6abeac132ec6f962ceae4920a170f6/assets/screenshot.png)
 
 ## 功能
 

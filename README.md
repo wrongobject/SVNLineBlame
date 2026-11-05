@@ -4,6 +4,12 @@
 
 插件介绍：http://43.155.216.127:3000/fool.html
 
+## 功能截图
+
+![SVN Blame Hover 功能演示：悬停/选中行显示 SVN 提交信息](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/main/assets/screenshot.png)
+
+[查看贴图原图](https://raw.githubusercontent.com/wrongobject/SVNLineBlame/main/assets/screenshot.png)
+
 ## 功能
 
 - **悬停即显示（默认，无需任何菜单/命令）**：鼠标停在某一行上，会**在该行末尾直接显示**该行的提交信息（作者 · r版本号 · 时间），
